@@ -12,7 +12,7 @@ namespace ShopHierarchy.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder builder)
         {
-            builder.UseSqlServer("Server=(local)\\tg;user id=sa;password=123; Database=EFCoreTest;Pooling=false; Trusted_Connection=True");
+            builder.UseSqlServer("Server=(local)\\tg;Database=EFCoreTest; Trusted_Connection=True");
             base.OnConfiguring(builder);
         }
    
