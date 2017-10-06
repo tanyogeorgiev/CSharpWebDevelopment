@@ -18,7 +18,7 @@ namespace Student_System
             {
 
                 //db.Database.Migrate();
-                //DbSeed(db);
+                DbSeed(db);
                 // DbLicenseSeed(db);
 
                 // PrintStudentsWithHomeworks(db);
@@ -253,7 +253,7 @@ namespace Student_System
                 db.Database.EnsureDeleted();
                 db.Database.EnsureCreated();
 
-                var currDate = DateTime.Now;
+                var currDate =  DateTime.Now;
 
                 //Students
                 Console.WriteLine("Adding Students");
