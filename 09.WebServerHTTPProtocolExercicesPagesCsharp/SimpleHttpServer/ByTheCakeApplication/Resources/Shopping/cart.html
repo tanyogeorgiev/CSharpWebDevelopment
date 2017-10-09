@@ -1,0 +1,16 @@
+﻿<h1>Your Cart</h1>
+
+<div>
+    <a href="/">Back to home</a>
+    <a href="/search">Search more cakes</a>
+</div>
+<ul>
+{{{cartItems}}}
+</ul>
+<hr/>
+Total Cost: ${{{totalCost}}}
+<hr />
+<form action="/shopping/finish-order" method="post">
+    <input type="submit" name="Finish Order" value="Finish Order" />
+
+</form>
