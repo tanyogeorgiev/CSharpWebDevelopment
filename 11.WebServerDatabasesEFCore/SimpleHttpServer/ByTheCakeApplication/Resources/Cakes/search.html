@@ -1,0 +1,16 @@
+﻿<a href="/">Back to Home</a>
+
+<form method="get">
+    Name:
+    <input type="text" name="searchTerm" placeholder="Search Cake" value="{{{searchTerm}}}"/>
+    <input type="submit" value="Search" />
+</form>
+
+<div style="display:{{{showCart}}}">
+    <a href="/cart"> Your Cart:</a>  {{{products}}}
+   </div>
+
+<ul>
+    {{{results}}}
+    
+</ul>
