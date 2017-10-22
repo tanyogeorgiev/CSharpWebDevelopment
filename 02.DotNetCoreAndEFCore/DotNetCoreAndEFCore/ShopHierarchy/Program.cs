@@ -10,15 +10,15 @@ namespace ShopHierarchy
         {
             using (var db = new MyDbContext())
             {
-                PrepareDatabase(db);
-                SaveSalesman(db);
-                SaveItems(db);
-                ProcessCommands(db);
-                // PrintSalesmanWithCustomers(db);
+              //  PrepareDatabase(db);
+              //  SaveSalesman(db);
+              //  SaveItems(db);
+              //  ProcessCommands(db);
+                PrintSalesmanWithCustomers(db);
                 // PrintCustomersWithOrdersReviews(db);
-                // PrintCustomersOrdersAndReviews(db);
-                // PrintCustomerData(db);
-                // PrintOrdersWithMoreThanOneItem(db);
+            // PrintCustomersOrdersAndReviews(db);
+             //   PrintCustomerData(db);
+               //  PrintOrdersWithMoreThanOneItem(db);
 
 
             }
@@ -99,13 +99,14 @@ namespace ShopHierarchy
         {
             var salesmenData = db
                 .Salesmans
+                .OrderByDescending(s => s.Customers.Count)
+                .ThenBy(s => s.Name)
                 .Select(sm => new
                 {
                     sm.Name,
                     Customers = sm.Customers.Count
                 })
-                .OrderByDescending(s => s.Customers)
-                .ThenBy(s => s.Name)
+                
                 .ToList();
 
             foreach (var salesman in salesmenData)
