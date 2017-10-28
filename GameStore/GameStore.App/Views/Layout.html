@@ -3,7 +3,7 @@
 <head>
     <title>Game Store</title>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <link href="bootstrap.min.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
     <header>
@@ -22,12 +22,32 @@
                             <a class="nav-link" href="/users/cart">Cart</a>
                         </li>
                     </ul>
-                    <ul class="navbar-nav">
+                    <ul class="navbar-nav" style="display: {{{anonymousDisplay}}}">
                         <li class="nav-item">
                             <a class="nav-link" href="/users/login">Login</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/users/register">Register</a>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav" style="display: {{{userDisplay}}}">
+                          <li class="nav-item">
+                            <a class="nav-link" href="/users/logout">Logout</a>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav" style="display: {{{adminDisplay}}}">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="AdminDropdownMenuLink"
+                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Admin
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <a class="dropdown-item" href="/admin/all">All Games</a>
+                            </div>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="/users/logout">Logout</a>
                         </li>
                     </ul>
                 </div>
@@ -39,7 +59,7 @@
         <ul class="text-left">
             {{{error}}}
         </ul>
-</div>
+    </div>
     {{{content}}}
 
     <!--Footer-->
@@ -49,7 +69,8 @@
         </div>
     </footer>
 
-    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+    <script src="jquery-3.1.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="bootstrap.min.js"></script>
 </body>
 </html>

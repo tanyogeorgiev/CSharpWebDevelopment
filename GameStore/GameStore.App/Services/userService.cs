@@ -9,39 +9,40 @@ namespace GameStore.App.Services
 
     public class UserService : IUserService
     {
+        private readonly GameStoreDbContext db;
+
+        public UserService(GameStoreDbContext db)
+        {
+            this.db = db;
+        }
+
         public bool Create(string email, string password, string name)
         {
-            using (var db = new GameStoreDbContext())
+
+            if (this.db.Users.Any(u => u.Email == email))
             {
-                if (db.Users.Any(u => u.Email == email))
-                {
-                    return false;
-                }
-
-                    var newUser = new User()
-                    {
-                        Email = email,
-                        Password = password,
-                        Name = name
-                    };
-
-                    db.Add(newUser);
-                    db.SaveChanges();
-
-                    return true;
-             }
-        }
-        public bool UserExist(string email, string pasword)
-        {
-            using (var db = new GameStoreDbContext())
-            {
-                return db
-                    .Users
-                    .Any(u => u.Email == email && u.Password == pasword);
-
+                return false;
             }
 
-        }
+            var isAdmin = !this.db.Users.Any();
 
+            var newUser = new User()
+            {
+                Email = email,
+                Password = password,
+                Name = name,
+                IsAdmin = isAdmin
+            };
+
+            this.db.Add(newUser);
+            this.db.SaveChanges();
+
+            return true;
+
+        }
+        public bool UserExist(string email, string pasword)
+            => this.db
+                    .Users
+                    .Any(u => u.Email == email && u.Password == pasword);
     }
 }

@@ -3,21 +3,20 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace GameStore.App.Infrastructure.Validations
+namespace GameStore.App.Infrastructure.Validations.Games
 {
-    public class EmailAttribute : PropertyValidationAttribute
+    public class VideoIdAttribute : PropertyValidationAttribute
     {
         public override bool IsValid(object value)
         {
-            var email = value as string;
+            var videoId = value as string;
 
-            if (email == null)
+            if (videoId == null)
             {
                 return true;
             }
 
-            return email.Contains(".") && email.Contains("@");
+            return videoId.Length == 11;
         }
-
     }
 }

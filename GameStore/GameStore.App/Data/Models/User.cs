@@ -1,4 +1,5 @@
 ﻿
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace GameStore.App.Data.Models
@@ -18,6 +19,10 @@ namespace GameStore.App.Data.Models
 
         [MaxLength(100)]
         public string Name { get; set; }
+
+        public bool IsAdmin { get; set; }
+
+        public List<Order> Orders { get; set; } = new List<Order>();
 
     }
 }

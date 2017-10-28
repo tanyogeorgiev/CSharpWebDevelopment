@@ -2,6 +2,7 @@
 namespace GameStore.App.Models
 {
     using Infrastructure.Validations;
+    using Infrastructure.Validations.Users;
 
     public  class RegisterModel
     {

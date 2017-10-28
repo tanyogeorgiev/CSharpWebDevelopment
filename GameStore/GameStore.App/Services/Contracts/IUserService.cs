@@ -5,9 +5,7 @@
 
        bool  Create(string email, string password, string name);
 
-        bool UserExist(string email, string pasword);
-
-
+       bool UserExist(string email, string pasword);
 
     }
 }

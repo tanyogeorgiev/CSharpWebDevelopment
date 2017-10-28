@@ -2,12 +2,10 @@
 
 namespace GameStore.App.Controllers
 {
-    using GameStore.App.Services;
-    using GameStore.App.Services.Contracts;
     using Models;
+    using Services.Contracts;
     using SimpleMvc.Framework.Attributes.Methods;
     using SimpleMvc.Framework.Contracts;
-    using SimpleMvc.Framework.Controllers;
 
     public class UsersController : BaseController
     {
@@ -15,18 +13,14 @@ namespace GameStore.App.Controllers
             <li>Password – length must be at least 6 symbols and must contain at least 1 uppercase, 1 lowercase letter and 1 digit</li>
             <li>Confirm Password – must match the provided password</li>";
         private const string EmailExistError = @"<li> Email is already taken</li>";
-        
-        private const string LoginError = @"<li> Invalid credentials</li>";
+        private const string LoginError = @"<li>Invalid credentials</li>";
 
         private IUserService users;
 
-
-
-
-        public UsersController()
+        
+        public UsersController(IUserService users)
         {
-            this.users = new UserService();
-
+            this.users = users;
         }
         
 
@@ -87,8 +81,13 @@ namespace GameStore.App.Controllers
                 this.ShowError(LoginError);
                 return this.View();
             }
+            
+        }
 
-           
+        public IActionResult Logout()
+        {
+            this.SignOut();
+            return this.Redirect("/");
         }
 
 
